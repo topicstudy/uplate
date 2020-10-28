@@ -15,5 +15,5 @@ public class Constant {
     //主颜色
     public static final Color MAIN_COLOR = Color.BLACK;
     //静态资源（图片、视频等）位置
-    public static final String RELATIVE_STATIC_RESOURCE_PATH="./uPlate/src/main/resources/";
+    public static final String RELATIVE_STATIC_RESOURCE_PATH="./src/main/resources/";
 }
