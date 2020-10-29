@@ -150,6 +150,7 @@ public class Window {
 
                     if ((UPlate.EXIST).equals(status)) {//有U盘
                         uPlateInOrOutJLabel.setText("检测到U盘：" + uPlateName);
+                        errMsgJLabel.setText("");
                     } else if ((UPlate.NOT_EXIST).equals(status)) {//无U盘
                         uPlateInOrOutJLabel.setText("未检测到U盘");
                         capacityJLabel.setText("");
@@ -176,10 +177,12 @@ public class Window {
                 }
                 //隐藏"开始测量"的按钮
                 startMeasureJButton.setVisible(false);
+                //影藏结果
+                capacityJLabel.setText("");
 
                 //预计测该U盘需要的时间 单位：分钟
                 double time = UPlateUtil.estimateTime(uPlateName);
-                timeJLabel.setText("预计耗时：" + String.format("%.2f", time) + " 分钟(若是读卡器时间加倍)                                        ");
+                timeJLabel.setText("正在测量...预计耗时：" + String.format("%.2f", time) + " 分钟(若是读卡器时间加倍)                                        ");
                 ingJLabel.setIcon(new ImageIcon(Constant.RELATIVE_STATIC_RESOURCE_PATH + "ing.gif"));
 
                 final Double[] gBytes = {null};//测量结果

@@ -25,11 +25,10 @@ public class UPlateUtil {
      */
     public static double measure(String plateName) throws Exception {
         String platePath = plateName + ":/";
-        //clearPlate(plateName);
+        clearPlate(plateName);
         double capacity = fillAndGetCapacity(platePath);
-        //clearPlate(plateName);
         saveResult(plateName, capacity + "GB");
-        System.out.println("capcity="+capacity);
+        clearPlate(plateName);
         return capacity;
     }
 
@@ -40,7 +39,6 @@ public class UPlateUtil {
      * @return U盘容量 单位GB
      */
     private static double fillAndGetCapacity(String platePath) {
-        System.out.println("pp="+platePath);
         int count_block_16MB = 0;//填充U盘16MB的块用了几个
         int count_block_1MB = 0;//填充U盘1MB的块用了几个
         double capacity = 0.0;//U盘容量 单位GB
@@ -83,7 +81,7 @@ public class UPlateUtil {
      * @param plate 例如 e:/
      */
     static void clearPlate(String plate) {
-        FileUtil.delete(plate);
+        FileUtil.delete(plate+":/");
     }
 
     /**
@@ -123,8 +121,7 @@ public class UPlateUtil {
             return;
         }
         savePath += "测量结果.txt";
-        String merchantLabelCapacity = getMerchantLabelCapacity(uplateName + ":/") + "GB";
-        String msg = "U盘真实容量是" + realCapacity + "(商家标的容量是" + merchantLabelCapacity + ")";
+        String msg = "U盘真实容量是" + realCapacity;
         FileOutputStream fileOutputStream = new FileOutputStream(savePath);
         fileOutputStream.write(msg.getBytes());
         fileOutputStream.close();
@@ -152,7 +149,6 @@ public class UPlateUtil {
                 set2.removeAll(set);
                 String uPlateName = set2.iterator().next().toString();//E:\
                 uPlateName = uPlateName.substring(0, 1);//E
-                System.out.println(uPlateName);
                 uPlate.setStatus(UPlate.EXIST);
                 uPlate.setName(uPlateName);
             } else if (afterUPlateInOrOutAllRoots.length < allRoots.length) {
