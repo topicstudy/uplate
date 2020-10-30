@@ -2,6 +2,9 @@ package com.wjh.test;
 
 import com.wjh.util.ThreadUtil;
 
+/**
+ * why???
+ */
 public class ThreadTest {
     public static void main(String[] args) {
         final Integer[] a = {null};
@@ -10,7 +13,7 @@ public class ThreadTest {
             public void run() {
 
                 while (true) {
-                    ThreadUtil.sleep(300, Thread.currentThread());
+                    ThreadUtil.sleep(300, Thread.currentThread());//why???
                     if (a[0] != null) {
                         System.out.println("break");
                         break;
