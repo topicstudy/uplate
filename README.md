@@ -1,13 +1,24 @@
-## 该model的功能是测U盘容量
-该软件不能做成BS，因为:
- * 服务器无法直接操作客户端电脑(如直接将文件写入客户端电脑，需要用户手动点)
- * 大文件由服务器写入客户端需要很长时间
+# 介绍
+* 该软件的功能是测U盘容量
+* 该软件不能做成BS，因为:
+ 1. 服务器无法直接操作客户端电脑(如直接将文件写入客户端电脑，需要用户手动点)
+ 2. 大文件由服务器写入客户端需要很长时间
 
-## 下载
- * src/main/resources下可看到exe文件
- * [下载测U盘真实容量.exe](https://github.com/luotuoshamo/uplate/tree/master/src/main/resources/)
+# 使用
+进入项目根目录中（能看到pom.xml），打开cmd运行：
 
-## 待改进
- * icon图标无法显示
- * 测量结束后没结束掉所有线程
- * 线程体时死循环时无法感知外界数据的变化，必须要Thread.sleep
+```shell
+mvn clean
+mvn package
+```
+
+等待运行完成，会在项目根目录中看到target文件夹，点进去，然后运行：
+
+```shell
+cd ./target
+java -classpath uplate-xxx.jar com.wjh.ui.Window
+```
+
+即可出现如下页面：
+
+![image-20210918002138500](README.assets\image-20210918002138500.png)

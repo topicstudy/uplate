@@ -141,7 +141,7 @@ public class Window {
             public void run() {
                 while (true) {
                     try {
-                        Thread.sleep(500);//节约资源
+                        Thread.sleep(500);//节约资源,非必须
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
